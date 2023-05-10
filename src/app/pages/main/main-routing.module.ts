@@ -1,15 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MainComponent} from "./pages/main/main.component";
-import {MainEnum} from "./pages/main/main.enum.ts";
+import {MainComponent} from "./main.component";
 
 const routes: Routes = [
-  {path: MainEnum.Route, component: MainComponent}
+  {
+    path: '', component: MainComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
+export class MainRoutingModule {
 }
