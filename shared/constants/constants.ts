@@ -1,3 +1,4 @@
+export const SUCCESS_CODE = 0;
 export const MOKO =
   [
     {
