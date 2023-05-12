@@ -13,7 +13,7 @@ export class BannerComponent {
   }
 
   banners: IBanner[] = [];
-  currentMainBanner: IBanner | undefined;
+  currentMainBanner: number | undefined;
   secondaryBanners: IBanner[] = [];
   mainBanners: IBanner[] = [];
   loading: boolean = true;
@@ -28,11 +28,10 @@ export class BannerComponent {
         this.banners = res.data;
         this.secondaryBanners = [...res.data].splice((res.data.length - 2), res.data.length);
         this.mainBanners = [...res.data].splice(0, res.data.length - 2);
-        this.currentMainBanner = res.data[0];
         setTimeout(() => {
           this.loading = false;
         }, 1000)
-        // this.iterableBanners();
+        this.iterableBanners();
       }
     })
   }
@@ -43,11 +42,11 @@ export class BannerComponent {
       if (index === this.mainBanners.length) {
         setTimeout(() => {
           index = 0;
-          this.currentMainBanner = this.mainBanners[index];
+          this.currentMainBanner = index;
         }, 500);
       } else {
         setTimeout(() => {
-          this.currentMainBanner = this.mainBanners[index];
+          this.currentMainBanner = index;
           index++;
         }, 500);
       }

@@ -1,9 +1,11 @@
 <div class="container">
   <div class="banners">
     <div
+      *ngFor="let banner of banners index as index"
       [class.skeleton]="loading"
+      [class.block]="index === currentMainBanner"
       class="banners-main"
-      [style]="'background-image:url(' + currentMainBanner?.image + ')'"
+      [style]="'background-image:url(' + banner?.image + ')'"
     ></div>
     <div class="banners-secondary">
       <div class="secondary-banner" *ngFor="let banner of secondaryBanners"
