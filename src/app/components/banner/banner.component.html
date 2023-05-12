@@ -1,13 +1,15 @@
-<!--<div class="container">
-  <div class="swiper" style="height: 400px">
-    &lt;!&ndash; Additional required wrapper &ndash;&gt;
-    <div class="swiper-wrapper">
-      &lt;!&ndash; Slides &ndash;&gt;
-      <div class="swiper-slide" *ngFor="let banner of banners">{{banner.title}}</div>
-      ...
+<div class="container">
+  <div class="banners">
+    <div
+      [class.skeleton]="loading"
+      class="banners-main"
+      [style]="'background-image:url(' + currentMainBanner?.image + ')'"
+    ></div>
+    <div class="banners-secondary">
+      <div class="secondary-banner" *ngFor="let banner of secondaryBanners"
+           [style]="'background-image:url(' + banner?.image + ')'"
+           [class.skeleton]="loading"
+      ></div>
     </div>
-    &lt;!&ndash; If we need pagination &ndash;&gt;
-    <div class="swiper-pagination"></div>
   </div>
-</div>-->
-<div>{{ banners }}</div>
+</div>

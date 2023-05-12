@@ -1,11 +1,10 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {SUCCESS_CODE} from "shared/constants/constants";
 import {IBanner, IBannerResponse} from "src/app/components/banner/banner.interface";
 import {BannerService} from "src/app/components/banner/banner.service";
 
 @Component({
   selector: 'app-banner',
-  standalone: true,
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss']
 })
@@ -14,6 +13,10 @@ export class BannerComponent {
   }
 
   banners: IBanner[] = [];
+  currentMainBanner: IBanner | undefined;
+  secondaryBanners: IBanner[] = [];
+  mainBanners: IBanner[] = [];
+  loading: boolean = true;
 
   ngOnInit(): void {
     this.getBanners();
@@ -23,37 +26,31 @@ export class BannerComponent {
     this.bannerService.getBanners().subscribe((res: IBannerResponse) => {
       if (res.code === SUCCESS_CODE) {
         this.banners = res.data;
-        console.log(res.data);
-        this.initSwiper()
+        this.secondaryBanners = [...res.data].splice((res.data.length - 2), res.data.length);
+        this.mainBanners = [...res.data].splice(0, res.data.length - 2);
+        this.currentMainBanner = res.data[0];
+        setTimeout(() => {
+          this.loading = false;
+        }, 1000)
+        // this.iterableBanners();
       }
-      console.log(res);
     })
   }
 
-  initSwiper(): void {
-    // @ts-ignore
-    const swiper = new Swiper('.swiper', {
-      // Optional parameters
-      direction: 'horizontal',
-      loop: true,
-      speed: 1000,
-
-      // Autoplay
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
-
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+  iterableBanners(): void {
+    let index = 0;
+    setInterval(() => {
+      if (index === this.mainBanners.length) {
+        setTimeout(() => {
+          index = 0;
+          this.currentMainBanner = this.mainBanners[index];
+        }, 500);
+      } else {
+        setTimeout(() => {
+          this.currentMainBanner = this.mainBanners[index];
+          index++;
+        }, 500);
       }
-    });
+    }, 3000)
   }
 }

@@ -1,8 +1,32 @@
-.swiper {
-  width: 600px;
-  height: 350px;
-}
+.banners {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 400px;
 
-a {
+  &-main {
+    flex: 3;
+    background-size: cover;
+    border-radius: 1rem;
+    height: 100%;
+    cursor: pointer;
+  }
 
+  &-secondary {
+    flex: 1;
+    border-radius: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .secondary-banner {
+      flex: 1;
+      border-radius: 1rem;
+      background-size: cover;
+      cursor: pointer;
+    }
+  }
 }
