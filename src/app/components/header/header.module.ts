@@ -5,6 +5,7 @@ import {CatalogButtonModule} from "src/app/components/buttons/catalog-button/cat
 import {LanguageButtonModule} from "src/app/components/buttons/language-button/language-button.module";
 import {LocationButtonModule} from "src/app/components/buttons/location-button/location-button.module";
 import {ProfileButtonModule} from "src/app/components/buttons/profile-button/profile-button.module";
+import {GlobalSearchModule} from "src/app/components/global-search/global-search.module";
 import {HeaderComponent} from "src/app/components/header/header.component";
 import {LogoModule} from "src/app/components/logo/logo.module";
 
@@ -18,7 +19,8 @@ import {LogoModule} from "src/app/components/logo/logo.module";
     LocationButtonModule,
     ProfileButtonModule,
     CartButtonModule,
-    LanguageButtonModule
+    LanguageButtonModule,
+    GlobalSearchModule
   ],
   exports: [HeaderComponent]
 })

@@ -1,0 +1,31 @@
+.search {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  width: 100%;
+  overflow: hidden;
+
+  &-input {
+    width: 100%;
+
+    input {
+      width: 100%;
+      min-height: 40px;
+      outline: none;
+      box-sizing: border-box;
+      padding-left: 1rem;
+      border: none;
+    }
+  }
+
+  &-button {
+    button {
+      min-height: 40px;
+      width: 120px;
+      background: #febd01;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+    }
+  }
+}
