@@ -13,7 +13,7 @@ export class BannerComponent {
   }
 
   banners: IBanner[] = [];
-  currentMainBanner: number | undefined;
+  currentMainBanner: IBanner | undefined;
   secondaryBanners: IBanner[] = [];
   mainBanners: IBanner[] = [];
   loading: boolean = true;
@@ -26,6 +26,7 @@ export class BannerComponent {
     this.bannerService.getBanners().subscribe((res: IBannerResponse) => {
       if (res.code === SUCCESS_CODE) {
         this.banners = res.data;
+        this.currentMainBanner = res.data[0];
         this.secondaryBanners = [...res.data].splice((res.data.length - 2), res.data.length);
         this.mainBanners = [...res.data].splice(0, res.data.length - 2);
         setTimeout(() => {
@@ -40,15 +41,11 @@ export class BannerComponent {
     let index = 0;
     setInterval(() => {
       if (index === this.mainBanners.length) {
-        setTimeout(() => {
-          index = 0;
-          this.currentMainBanner = index;
-        }, 500);
+        index = 0;
+        this.currentMainBanner = this.mainBanners[index];
       } else {
-        setTimeout(() => {
-          this.currentMainBanner = index;
-          index++;
-        }, 500);
+        this.currentMainBanner = this.mainBanners[index];
+        index++;
       }
     }, 3000)
   }
