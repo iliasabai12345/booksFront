@@ -1,0 +1,49 @@
+.location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+
+  &-icon {
+    animation: jump 1s infinite;
+    transform-origin: top;
+    transform: scaleY(1) translateY(2px);
+  }
+
+  &-text {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: scaleY(1) translateY(2px);
+    transform-origin: bottom;
+  }
+  16% {
+    transform: scaleY(1) translateY(-2px);
+    transform-origin: top;
+  }
+  32% {
+    transform: scaleY(0.95) translateY(-2px);
+    transform-origin: top;
+  }
+  48% {
+    transform: scaleY(1) translateY(-2px);
+    transform-origin: top;
+  }
+  64% {
+    transform: scaleY(1) translateY(2px);
+    transform-origin: bottom;
+  }
+  80% {
+    transform: scaleY(0.95) translateY(2px);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(1) translateY(2px);
+    transform-origin: bottom;
+  }
+}

@@ -1,0 +1,17 @@
+.catalog {
+  &-icon {
+    font-size: 2rem;
+    color: #fff;
+  }
+
+  &-button {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-text {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+  }
+}

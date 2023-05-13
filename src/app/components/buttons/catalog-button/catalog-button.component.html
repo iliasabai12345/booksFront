@@ -1,0 +1,12 @@
+<div class="catalog-button">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu" class="catalog-icon"></mat-icon>
+  </button>
+  <div class="catalog-text">Каталог</div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngFor="let category of categories">
+    <span>{{category.title}}</span>
+  </button>
+</mat-menu>

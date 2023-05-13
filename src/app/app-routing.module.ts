@@ -4,7 +4,8 @@ import {MainComponent} from "./pages/main/main.component";
 import {MainEnum} from "./pages/main/main.enum.ts";
 
 const routes: Routes = [
-  {path: MainEnum.Route, component: MainComponent}
+  {path: MainEnum.Route, component: MainComponent},
+  {path: '**', redirectTo: '/' + MainEnum.Route},
 ];
 
 @NgModule({
