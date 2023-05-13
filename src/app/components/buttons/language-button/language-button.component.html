@@ -1,0 +1,15 @@
+<div class="language">
+  <button mat-button [matMenuTriggerFor]="menu" class="language-button">
+    <mat-icon class="language-icon">translate</mat-icon>
+    <span>Русский</span>
+  </button>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <span>Русский</span>
+  </button>
+  <button mat-menu-item>
+    <span>Казакша</span>
+  </button>
+</mat-menu>
