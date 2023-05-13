@@ -37,6 +37,7 @@ $frontend-theme: mat.define-light-theme((
 @import "assets/styles/normalizer";
 @import "assets/styles/utils";
 @import "assets/styles/skeleton";
+@import "assets/styles/colors";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
