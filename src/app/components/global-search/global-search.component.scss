@@ -15,6 +15,10 @@
       box-sizing: border-box;
       padding-left: 1rem;
       border: none;
+
+      &:focus {
+        background: #fffbd2;
+      }
     }
   }
 
