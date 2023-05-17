@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
+import {DEFAULT_LOCATION} from "shared/constants/constants";
+import {StorageService} from "shared/services/storage.service";
 import {LocationComponent} from "src/app/modals/location/location.component";
 
 @Component({
@@ -8,20 +10,25 @@ import {LocationComponent} from "src/app/modals/location/location.component";
   styleUrls: ['./location-button.component.scss']
 })
 export class LocationButtonComponent {
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,
+              private readonly storageService: StorageService) {
   }
+
+  currentCity = this.storageService.city || DEFAULT_LOCATION;
 
   openLocation(): void {
     const dialogRef = this.dialog.open(LocationComponent, {
       width: '100%',
       height: '100%',
       maxWidth: '360px',
-      maxHeight: '550px'
+      maxHeight: '550px',
+      data: {
+        currentCity: this.currentCity
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result)
+      this.currentCity = result;
     });
   }
 }

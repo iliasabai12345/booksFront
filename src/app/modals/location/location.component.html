@@ -6,6 +6,22 @@
     </div>
     <div class="header__bottom"></div>
   </header>
-  <main></main>
-  <footer></footer>
+  <main>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="selectedCity">
+      <div class="cities">
+        <div class="cities__item" [class.cities__selected]="location.location_id === selectedCity?.location_id"
+             *ngFor="let location of locations" (click)="selectedCity= location">
+          {{location.title}}
+          <mat-radio-button class="example-radio-button" [value]="location" color="warn"></mat-radio-button>
+        </div>
+      </div>
+    </mat-radio-group>
+  </main>
+  <footer>
+    <button mat-button color="accent" (click)="close()">Отмена</button>
+    <button mat-button color="primary" (click)="selectCity()">Сохранить</button>
+  </footer>
 </div>

@@ -38,26 +38,22 @@ $frontend-theme: mat.define-light-theme((
 @import "assets/styles/utils";
 @import "assets/styles/skeleton";
 @import "assets/styles/colors";
+@import "assets/styles/material";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-body::-webkit-scrollbar-track
-{
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  border-radius: 10px;
-  background-color: #F5F5F5;
+//scrollbar
+body ::-webkit-scrollbar-thumb, body ::-webkit-scrollbar-track, html ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-track {
+  border-radius: 20px;
 }
 
-body::-webkit-scrollbar
-{
-  width: 6px;
-  background-color: #F5F5F5;
+body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, .2);
 }
 
-body::-webkit-scrollbar-thumb
-{
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-  background-color: #9b9b9b;
+body ::-webkit-scrollbar, html ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
 }

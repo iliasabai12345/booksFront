@@ -5659,3 +5659,10 @@ export const MOKO =
       id: "988890"
     }
   ]
+
+export const DEFAULT_LOCATION = {
+  _id: "64652db5bd93679972d3344c",
+  title: "Алматы",
+  location_id: 7,
+  __v: 0
+}
