@@ -4,7 +4,12 @@
       <div class="header__title">Выберите город</div>
       <mat-icon class="header__icon" (click)="close()">close</mat-icon>
     </div>
-    <div class="header__bottom"></div>
+    <div class="header__bottom">
+      <app-search-field
+        [key]="'title'"
+        [(items)]="locations"
+      ></app-search-field>
+    </div>
   </header>
   <main>
     <mat-radio-group
