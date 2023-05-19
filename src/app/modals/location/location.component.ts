@@ -1,7 +1,6 @@
 import {HttpClient} from "@angular/common/http";
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {DEFAULT_LOCATION} from "shared/constants/constants";
 import {StorageService} from "shared/services/storage.service";
 
 @Component({
@@ -17,13 +16,13 @@ export class LocationComponent implements OnInit {
   }
 
   locations: { title: string, location_id: number }[] = [];
-  selectedCity: { title: string; location_id: number; } | undefined = this.data.currentCity;
+  selectedCity: string | undefined = this.data.currentCity.title;
 
 
   ngOnInit(): void {
     this.http.get('/api/locations/getLocations').subscribe((res: any) => {
       this.locations = res.data;
-      this.selectedCity = this.storageService.city || DEFAULT_LOCATION;
+      this.selectedCity = this.storageService.city;
     })
   }
 

@@ -10,7 +10,7 @@ import {LocationComponent} from "src/app/modals/location/location.component";
   styleUrls: ['./location-button.component.scss']
 })
 export class LocationButtonComponent {
-  constructor(private dialog: MatDialog,
+  constructor(private readonly dialog: MatDialog,
               private readonly storageService: StorageService) {
   }
 
@@ -27,8 +27,8 @@ export class LocationButtonComponent {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.currentCity = result;
+    dialogRef.afterClosed().subscribe((result: string) => {
+      result && (this.currentCity = result);
     });
   }
 }

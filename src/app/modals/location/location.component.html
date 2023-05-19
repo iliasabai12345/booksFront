@@ -12,10 +12,10 @@
       class="example-radio-group"
       [(ngModel)]="selectedCity">
       <div class="cities">
-        <div class="cities__item" [class.cities__selected]="location.location_id === selectedCity?.location_id"
-             *ngFor="let location of locations" (click)="selectedCity= location">
+        <div class="cities__item" [class.cities__selected]="location.title === selectedCity"
+             *ngFor="let location of locations" (click)="selectedCity= location.title">
           {{location.title}}
-          <mat-radio-button class="example-radio-button" [value]="location" color="warn"></mat-radio-button>
+          <mat-radio-button class="example-radio-button" [value]="location.title" color="warn"></mat-radio-button>
         </div>
       </div>
     </mat-radio-group>
