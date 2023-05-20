@@ -1,13 +1,13 @@
-<div class="profile" [matMenuTriggerFor]="menu">
+<div class="profile" [matMenuTriggerFor]="menuProfile">
   <div class="profile-button">
     <img src="assets/images/profile.jpg" alt="profile">
   </div>
   <div class="profile-text">Войти</div>
 </div>
 
-<mat-menu #menu="matMenu">
+<mat-menu #menuProfile="matMenu">
   <ng-container *ngFor="let button of buttons">
-    <button mat-menu-item *ngIf="button.show">
+    <button mat-menu-item *ngIf="button.show" (click)="button.action()">
       <mat-icon>{{button.icon}}</mat-icon>
       <span>{{button.title}}</span>
     </button>
