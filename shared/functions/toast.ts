@@ -13,5 +13,5 @@ export function toast(image: status, text: string): void {
   const time = setTimeout(() => {
     div.remove();
     clearTimeout(time);
-  }, 30000)
+  }, 3000)
 }

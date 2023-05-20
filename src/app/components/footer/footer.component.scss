@@ -1,0 +1,43 @@
+.footer {
+  background: #ededed;
+  padding: 1rem 0;
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 2rem;
+
+    &-top, &-bottom {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        font-weight: bold;
+        cursor: pointer;
+        color: grey;
+        letter-spacing: 1.1px;
+        transition: .3s ease;
+
+        &:hover {
+          color: red;
+          transition: .3s ease;
+        }
+      }
+    }
+  }
+
+  &__description {
+    text-align: center;
+    font-size: 14px;
+    max-width: 900px;
+    margin: 0 auto 1rem;
+  }
+
+  &__copyright {
+    text-align: center;
+    font-size: 12px;
+  }
+}
