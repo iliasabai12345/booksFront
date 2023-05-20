@@ -12,18 +12,9 @@ export class ProfileButtonComponent {
 
   get buttons(): any[] {
     return [
-      {
-        id: 1, title: 'Войти', title_kk: '', icon: 'login', show: !this.isAuthorized, action: () => {
-        }
-      },
-      {
-        id: 2, title: 'Регистрация', title_kk: '', icon: 'logout', show: !this.isAuthorized, action: () => {
-        }
-      },
-      {
-        id: 3, title: 'Контакты', title_kk: '', icon: 'contacts', show: true, action: () => {
-        }
-      },
+      {id: 1, title: 'Войти', title_kk: '', icon: 'login', show: !this.isAuthorized, action: () => this.login},
+      {id: 2, title: 'Регистрация', title_kk: '', icon: 'logout', show: !this.isAuthorized, action: () => this.register},
+      {id: 3, title: 'Контакты', title_kk: '', icon: 'contacts', show: true, action: () => this.register},
       {
         id: 4, title: 'Мои заказы', title_kk: '', icon: 'list_alt', show: this.isAuthorized, action: () => {
         }
@@ -34,5 +25,15 @@ export class ProfileButtonComponent {
   // Проверка на авторизацию пользователя
   get isAuthorized(): boolean {
     return !!this.storageService.user;
+  }
+
+  // Вход
+  login(): void {
+
+  }
+
+  // Регистрация
+  register(): void {
+
   }
 }
