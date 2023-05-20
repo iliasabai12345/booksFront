@@ -13,4 +13,8 @@ export class MainService {
   getBooks(): Observable<any> {
     return this.http.get('api/books/getAllBooks')
   }
+
+  getContents(): Observable<any> {
+    return this.http.get('api/categories/getContents')
+  }
 }

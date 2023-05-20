@@ -7,23 +7,14 @@ import {MainService} from "src/app/pages/main/main.service";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  contents: any[] = [];
   constructor(private readonly mainsService: MainService) {
   }
 
   ngOnInit() {
-    console.log('work');
-    const categories: any[] = []
-    this.mainsService.getBooks().subscribe(books => {
-      console.log(books);
-      books.data.forEach((book: any) => {
-        const current = categories.find(res => book.category === res.keyword);
-        !current && categories.push({
-          title: book.category_name_ru,
-          title_kk: book.category_name_kz,
-          keyword: book.category
-        })
-      })
-      console.log(categories)
-    });
+    this.mainsService.getContents().subscribe(res => {
+      console.log(res);
+      this.contents = res.data;
+    })
   }
 }

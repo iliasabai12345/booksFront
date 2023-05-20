@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card__img">
+    <img [src]="product.img_url" [alt]="product.title">
+  </div>
+  <div class="card__title">
+    {{product.title}}
+  </div>
+  <div class="card__prices">
+    <div class="card__prices-price">
+      {{ product.price }}
+    </div>
+    <div class="card__prices-old" *ngIf="product?.old_price">
+      {{ product.old_price }}
+    </div>
+  </div>
+  <div class="cart-button">
+    <app-add-cart-btn></app-add-cart-btn>
+  </div>
+</div>

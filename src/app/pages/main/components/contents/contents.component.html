@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="contents">
+    <div class="contents__content" *ngFor="let content of contents">
+      <h2>{{ content.title }}</h2>
+      <div class="contents__content-books">
+        <app-product-card
+          *ngFor="let product of content.books"
+          [product]="product"
+        ></app-product-card>
+      </div>
+    </div>
+  </div>
+</div>
