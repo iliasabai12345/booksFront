@@ -1,0 +1,16 @@
+.category {
+  padding-bottom: 1rem;
+
+  h1 {
+    font-weight: 500 !important;
+    font-size: 22px !important;
+  }
+
+  &__books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    justify-content: space-between;
+  }
+}

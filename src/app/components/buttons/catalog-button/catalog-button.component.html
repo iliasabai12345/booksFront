@@ -6,7 +6,7 @@
 </div>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item *ngFor="let category of categories">
+  <button mat-menu-item *ngFor="let category of categories" (click)="toCategory(category.keyword)">
     <span>{{category.title}}</span>
   </button>
 </mat-menu>

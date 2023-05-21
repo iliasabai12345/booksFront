@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
+import {toast} from "shared/functions/toast";
 import {StorageService} from "shared/services/storage.service";
 import {LoginComponent} from "src/app/modals/login/login.component";
 import {RegisterComponent} from "src/app/modals/register/register.component";
@@ -88,5 +89,6 @@ export class ProfileButtonComponent {
   logout(): void {
     this.user = null;
     this.storageService.user = null;
+    toast('success','Вы вышли из аккаунта')
   }
 }
