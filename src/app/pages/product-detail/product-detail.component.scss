@@ -1,0 +1,37 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  section {
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: #fff;
+  }
+
+  &__main {
+    display: flex;
+    gap: 1rem;
+
+    &-img {
+      max-width: 227px;
+
+      img {
+        width: 227px;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      h1 {
+        color: #ffbd00 !important;
+        font-weight: bold !important;
+      }
+    }
+  }
+}

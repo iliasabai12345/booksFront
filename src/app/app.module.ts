@@ -10,11 +10,13 @@ import {MainModule} from "src/app/pages/main/main.module";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import { CategoryComponent } from './pages/category/category.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent
+    CategoryComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

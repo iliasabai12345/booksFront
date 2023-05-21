@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-logo',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class LogoComponent {
 
+  scroll() {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
 }

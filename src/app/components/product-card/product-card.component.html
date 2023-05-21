@@ -2,7 +2,7 @@
   <div class="card__img">
     <img [src]="product.img_url" [alt]="product.title">
   </div>
-  <div class="card__title">
+  <div class="card__title" [routerLink]="'/detail/' + product._id">
     {{product.title}}
   </div>
   <div class="card__prices">

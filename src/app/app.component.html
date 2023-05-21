@@ -4,7 +4,7 @@
     <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
   </div>
   <main style="background: #f5f5f5">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="scroll()"></router-outlet>
   </main>
   <app-footer></app-footer>
 </div>

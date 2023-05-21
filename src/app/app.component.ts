@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -7,12 +6,12 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'books';
 
-  constructor(private readonly http: HttpClient) {
+  constructor() {
   }
 
-  test() {
-    this.http.get('/api/books').subscribe(res => console.log(res));
+  scroll(): void {
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 }
