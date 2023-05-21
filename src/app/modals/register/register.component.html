@@ -1,1 +1,17 @@
-<p>register works!</p>
+<div class="register">
+  <div class="register__title">Регистрация</div>
+  <form class="register__form" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Никнейм</mat-label>
+      <input type="email" matInput formControlName="username"
+             placeholder="Введите никнейм">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Пароль</mat-label>
+      <input type="email" matInput formControlName="password"
+             placeholder="Введите пароль">
+    </mat-form-field>
+  </form>
+  <app-spinner-button [text]="'Зарегестрироватся'" (onClick)="register()" [loading]="loading"
+                      [disabled]="form.invalid"></app-spinner-button>
+</div>

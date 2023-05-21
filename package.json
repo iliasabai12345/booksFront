@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.0.0",
+  "author": "Abai Ilias",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --o --proxy-config ./proxy.conf.json",

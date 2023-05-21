@@ -1,0 +1,29 @@
+button {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  background: #febd01;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:disabled {
+    background: #bebebe;
+  }
+}
+
+mat-spinner {
+  width: 32px !important;
+  height: 32px !important;
+
+  ::ng-deep {
+    svg {
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
+}

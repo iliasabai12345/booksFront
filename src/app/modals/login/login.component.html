@@ -12,5 +12,6 @@
              placeholder="Введите пароль">
     </mat-form-field>
   </form>
-  <button [disabled]="form.invalid" (click)="login()">send</button>
+  <app-spinner-button [text]="'Войти'" (onClick)="login()" [loading]="loading"
+                      [disabled]="form.invalid"></app-spinner-button>
 </div>

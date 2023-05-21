@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {StorageService} from "shared/services/storage.service";
 import {LoginComponent} from "src/app/modals/login/login.component";
+import {RegisterComponent} from "src/app/modals/register/register.component";
 
 @Component({
   selector: 'app-profile-button',
@@ -13,27 +14,42 @@ export class ProfileButtonComponent {
               private readonly dialog: MatDialog) {
   }
 
-  buttons: any[] = [
-    {id: 1, title: 'Войти', title_kk: '', icon: 'login', show: !this.isAuthorized, action: () => this.login()},
-    {
-      id: 2,
-      title: 'Регистрация',
-      title_kk: '',
-      icon: 'logout',
-      show: !this.isAuthorized,
-      action: () => this.register
-    },
-    {id: 3, title: 'Контакты', title_kk: '', icon: 'contacts', show: true, action: () => this.register},
-    {
-      id: 4, title: 'Мои заказы', title_kk: '', icon: 'list_alt', show: this.isAuthorized, action: () => {
-      }
-    },
-  ]
+  user: any = this.storageService.user || false;
 
-  // Проверка на авторизацию пользователя
-  get isAuthorized(): boolean {
-    return !!this.storageService.user;
-  }
+  /*  buttons = [
+        {
+          id: 1,
+          title: 'Войти',
+          title_kk: '',
+          icon: 'login',
+          show: !this.user,
+          action: () => this.login()
+        },
+        {
+          id: 2,
+          title: 'Регистрация',
+          title_kk: '',
+          icon: 'login',
+          show: !this.user,
+          action: () => this.register()
+        },
+        {
+          id: 3,
+          title: 'Контакты',
+          title_kk: '',
+          icon: 'contacts',
+          show: this.user,
+          action: () => this.register()
+        },
+        {
+          id: 4,
+          title: 'Мои заказы',
+          title_kk: '',
+          icon: 'list_alt',
+          show: this.user,
+          action: () => true
+        },
+      ]*/
 
   // Вход
   login(): void {
@@ -43,10 +59,34 @@ export class ProfileButtonComponent {
       maxWidth: '360px',
       maxHeight: '250px'
     });
+
+    dialogRef.afterClosed().subscribe((user: any) => {
+      if (user) {
+        this.user = user;
+        this.storageService.user = user;
+      }
+    });
   }
 
   // Регистрация
   register(): void {
+    const dialogRef = this.dialog.open(RegisterComponent, {
+      width: '100%',
+      height: '100%',
+      maxWidth: '360px',
+      maxHeight: '250px'
+    });
 
+    dialogRef.afterClosed().subscribe((user: any) => {
+      if (user) {
+        this.user = user;
+        this.storageService.user = user;
+      }
+    });
+  }
+
+  logout(): void {
+    this.user = null;
+    this.storageService.user = null;
   }
 }

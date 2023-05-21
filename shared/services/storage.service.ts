@@ -16,7 +16,7 @@ export class StorageService {
   }
 
   set user(user) {
-    user && localStorage.setItem(LS_USER, JSON.stringify(user));
+    user ? localStorage.setItem(LS_USER, JSON.stringify(user)) : localStorage.removeItem(LS_USER);
   }
 
   // city

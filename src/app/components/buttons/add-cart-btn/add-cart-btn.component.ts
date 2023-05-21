@@ -9,6 +9,6 @@ import {toast} from "shared/functions/toast";
 export class AddCartBtnComponent {
 
   addCart(): void {
-    toast('success', 'success')
+    toast('assets/images/cloun.png', 'Книга успешно добавлен в корзину')
   }
 }
