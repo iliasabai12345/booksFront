@@ -1,19 +1,19 @@
 <div class="card">
   <div class="card__img">
-    <img [src]="product.img_url" [alt]="product.title">
+    <img [src]="book.img_url" [alt]="book.title">
   </div>
-  <div class="card__title" [routerLink]="'/detail/' + product._id">
-    {{product.title}}
+  <div class="card__title" [routerLink]="'/detail/' + book._id">
+    {{book.title}}
   </div>
   <div class="card__prices">
     <div class="card__prices-price">
-      {{ product.price }}
+      {{ book.price }}
     </div>
-    <div class="card__prices-old" *ngIf="product?.old_price">
-      {{ product.old_price }}
+    <div class="card__prices-old" *ngIf="book?.old_price">
+      {{ book.old_price }}
     </div>
   </div>
   <div class="cart-button">
-    <app-add-cart-btn></app-add-cart-btn>
+    <app-add-cart-btn [book]="cartProduct"></app-add-cart-btn>
   </div>
 </div>

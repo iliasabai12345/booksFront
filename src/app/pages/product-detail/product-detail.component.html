@@ -21,7 +21,7 @@
         <div>В корзину</div>
         <div>Цена: <span class="price">{{book.price}}</span></div>
         <div>Доступно на складе: <span style="font-weight: bold">{{book?.count}}</span></div>
-        <app-add-cart-btn></app-add-cart-btn>
+        <app-add-cart-btn [book]="cartBook"></app-add-cart-btn>
       </div>
     </section>
     <section class="detail__info"></section>
