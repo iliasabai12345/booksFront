@@ -6,6 +6,22 @@
       </div>
       <div class="detail__main-content">
         <h1>{{book.title}}</h1>
+        <div class="detail__main-author">{{book.author}}</div>
+        <div class="detail__main-reviewsInfo"><span>Нет отзывов</span> | <span>Подписаться на новые отзывы</span></div>
+        <div class="detail__main-price">Цена: <span class="price">{{ book.price }}</span></div>
+        <div class="detail__main-oldPrice" *ngIf="book?.old_price">Старая цена: <span
+          class="oldPrice">{{ book.old_price }}</span></div>
+        <div class="detail__main-risk">Никакого риска! Оплатить данный товар Вы можете при получении. У нас есть
+          бесплатная доставка по Казахстану. Если возникли вопросы, пожалуйста, свяжитесь с нами удобным способом
+        </div>
+        <div class="detail__main-series" *ngIf="book?.series">Серия: <span>{{book?.series}}</span></div>
+        <div class="detail__main-description">{{book.description_ru}}</div>
+      </div>
+      <div class="detail__main-cart">
+        <div>В корзину</div>
+        <div>Цена: <span class="price">{{book.price}}</span></div>
+        <div>Доступно на складе: <span style="font-weight: bold">{{book?.count}}</span></div>
+        <app-add-cart-btn></app-add-cart-btn>
       </div>
     </section>
     <section class="detail__info"></section>

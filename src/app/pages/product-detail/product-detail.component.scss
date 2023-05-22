@@ -14,6 +14,7 @@
   &__main {
     display: flex;
     gap: 1rem;
+    width: 100%;
 
     &-img {
       max-width: 227px;
@@ -24,14 +25,84 @@
     }
 
     &-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      flex: 1;
 
       h1 {
         color: #ffbd00 !important;
         font-weight: bold !important;
       }
     }
+
+    &-author {
+      color: #238EEA;
+      width: fit-content;
+      padding-bottom: 4px;
+
+      &:hover {
+        color: #ffbd00;
+        cursor: pointer;
+      }
+    }
+
+    &-reviewsInfo {
+      font-size: 12px;
+      padding-bottom: 20px;
+
+      span:last-child {
+        color: #999;
+      }
+    }
+
+    &-price {
+      padding-bottom: 8px;
+    }
+
+    &-oldPrice {
+      padding-bottom: 1rem;
+
+      .oldPrice {
+        text-decoration: line-through;
+        color: #999;
+      }
+    }
+
+    &-risk {
+      background: #FFD662;
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      max-width: 500px;
+      margin-bottom: 1rem;
+    }
+
+    &-series {
+      font-size: 14px;
+      margin-bottom: 1.5rem;
+
+      span {
+        color: #238EEA;
+      }
+    }
+
+    &-description {
+      max-width: 700px;
+    }
+
+    &-cart {
+      border: 1px solid var(--gray2);
+      height: fit-content;
+      padding: 1rem;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      font-size: 14px;
+    }
   }
+}
+
+.price {
+  color: #D93E5C;
+  font-weight: bold;
+  font-size: 1rem;
 }
