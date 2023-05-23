@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LS_CITY, LS_USER} from "shared/constants/localstorage";
+import {LS_CART_COUNT, LS_CITY, LS_USER} from "shared/constants/localstorage";
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,15 @@ export class StorageService {
 
   set city(city) {
     city && localStorage.setItem(LS_CITY, JSON.stringify(city));
+  }
+
+  //cartCount
+  get cartCount() {
+    const count = localStorage.getItem(LS_CART_COUNT);
+    return count ? JSON.parse(count) : null;
+  }
+
+  set cartCount(count: number) {
+    count && localStorage.setItem(LS_CART_COUNT, JSON.stringify(count));
   }
 }

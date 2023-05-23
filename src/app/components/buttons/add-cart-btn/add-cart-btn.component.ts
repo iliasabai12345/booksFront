@@ -1,6 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {finalize} from "rxjs";
 import {toast} from "shared/functions/toast";
+import {ListenerService} from "shared/services/listener.service";
+import {StorageService} from "shared/services/storage.service";
 import {AddCartBtnService} from "src/app/components/buttons/add-cart-btn/add-cart-btn.service";
 
 @Component({
@@ -9,8 +12,12 @@ import {AddCartBtnService} from "src/app/components/buttons/add-cart-btn/add-car
   styleUrls: ['./add-cart-btn.component.scss']
 })
 export class AddCartBtnComponent {
-  constructor(private readonly addCartBtnService: AddCartBtnService) {
+  constructor(private readonly addCartBtnService: AddCartBtnService,
+              private readonly storageService: StorageService,
+              private readonly listenerService: ListenerService) {
   }
+
+  loading: boolean = false;
 
   form = new FormGroup({
     user_id: new FormControl(null),
@@ -31,12 +38,19 @@ export class AddCartBtnComponent {
   };
 
   addCart(): void {
-    this.addCartBtnService.addCart(this.form.value).subscribe(res => {
-      if (res.code === 0) {
-        toast(res.data.img_url, res.message);
-      } else {
-        toast('error', res.message || 'Произошла ошибка');
-      }
-    })
+    this.loading = true;
+    this.addCartBtnService.addCart(this.form.value)
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {
+        if (res.code === 0) {
+          toast(res.data.img_url, res.message);
+          const cartCount = this.listenerService.cartCount$.getValue();
+          this.storageService.cartCount = cartCount + 1;
+          this.listenerService.cartCount$.next(cartCount + 1);
+
+        } else {
+          toast('error', res.message || 'Произошла ошибка');
+        }
+      })
   }
 }
