@@ -11,6 +11,6 @@ export class AddCartBtnService {
   }
 
   addCart(body: any): Observable<any> {
-    return this.http.post(`api/cart/addBook`, body)
+    return this.http.post(`api/cart/addCart`, body)
   }
 }

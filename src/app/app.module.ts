@@ -12,12 +12,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent
   ],
     imports: [
         BrowserModule,
