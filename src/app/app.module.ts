@@ -4,6 +4,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AddCartBtnModule} from "src/app/components/buttons/add-cart-btn/add-cart-btn.module";
+import {SpinnerButtonModule} from "src/app/components/buttons/spinner-button/spinner-button.module";
 import {FooterModule} from "src/app/components/footer/footer.module";
 import {HeaderModule} from "src/app/components/header/header.module";
 import {ProductCardModule} from "src/app/components/product-card/product-card.module";
@@ -21,18 +22,19 @@ import { CartComponent } from './pages/cart/cart.component';
     ProductDetailComponent,
     CartComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        MainModule,
-        BrowserAnimationsModule,
-        HeaderModule,
-        FooterModule,
-        ProductCardModule,
-        MatProgressBarModule,
-        AddCartBtnModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MainModule,
+    BrowserAnimationsModule,
+    HeaderModule,
+    FooterModule,
+    ProductCardModule,
+    MatProgressBarModule,
+    AddCartBtnModule,
+    SpinnerButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

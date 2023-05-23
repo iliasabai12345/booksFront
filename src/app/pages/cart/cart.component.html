@@ -1,9 +1,35 @@
 <div class="container">
   <div class="cart">
-    <h1>Корзина</h1>
+    <h1>Корзина <span style="color: #000">({{ products.length }})</span></h1>
     <div class="cart__main">
-      <div class="cart__main-products"></div>
-      <div class="cart__main-cart"></div>
+      <div class="cart__main-products">
+        <div class="cart__products-header">
+          <div>Товары добавленные в корзину</div>
+          <div>Цена</div>
+          <div>Кол-во</div>
+          <div>Сумма</div>
+        </div>
+        <div class="cart__products-body" *ngFor="let product of products">
+          <div class="cart__product">
+            <div class="cart__product-img">
+              <img [src]="product.img_url" alt="" height="140">
+            </div>
+            <div class="cart__product-content">
+              <div class="cart__product-title" [routerLink]="'/detail/' + product.book_id">{{product.title}}</div>
+            </div>
+          </div>
+          <div>Цена</div>
+          <div>Кол-во</div>
+          <div>Сумма</div>
+        </div>
+      </div>
+      <div class="cart__main-cart">
+        <div class="cart__cart-header">Оформить заказ</div>
+        <div class="cart__cart-body">
+          <div class="cart__cart-total">Сумма: <span>{{ '4 5685' }}</span></div>
+          <app-spinner-button [text]="'Оформить заказ'"></app-spinner-button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
