@@ -31,12 +31,14 @@ export class AddCartBtnComponent {
     sku: new FormControl(null),
     price: new FormControl(null),
     category_name_kz: new FormControl(null),
-    book_id: new FormControl(null)
+    book_id: new FormControl(null),
+    sum: new FormControl(0)
   })
 
   @Input() set book(book: any) {
     this.form.patchValue(book);
     this.form.controls.book_id.patchValue(book._id);
+    this.form.controls.sum.patchValue(Number(book.price));
   };
 
   addCart(): void {

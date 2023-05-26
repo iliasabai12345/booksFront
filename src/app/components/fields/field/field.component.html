@@ -1,0 +1,5 @@
+<div class="field" [class.error]="errorMessage">
+  <label>{{label}} <span *ngIf="required">*</span></label>
+  <input type="text" [placeholder]="placeholder" [formControl]="formControl">
+  <div class="message" [style.visibility]="errorMessage">{{errorMessage || ' '}}</div>
+</div>

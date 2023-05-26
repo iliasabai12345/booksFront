@@ -1,0 +1,28 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+  justify-content: space-between;
+
+  &-step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 60px;
+    border: 1px solid var(--gray3);
+    border-radius: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &-active {
+    border: 2px solid var(--brand_yellow);
+    background: #FFBD001A;
+  }
+
+  &-disabled {
+    background: var(--gray3);
+  }
+}

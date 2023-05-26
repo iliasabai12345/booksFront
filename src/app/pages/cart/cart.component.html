@@ -34,14 +34,14 @@
               <button (click)="changeQty(product,1)" [disabled]="product.qty === product.count">+</button>
             </div>
           </div>
-          <div>{{product.price * product.qty}}</div>
+          <div>{{product.sum}}</div>
         </div>
       </div>
       <div class="cart__main-cart">
         <div class="cart__cart-header">Оформить заказ</div>
         <div class="cart__cart-body">
           <div class="cart__cart-total">Сумма: <span>{{ totalSum | currency:'USD':true }}</span></div>
-          <app-spinner-button [text]="'Оформить заказ'"></app-spinner-button>
+          <app-spinner-button [text]="'Оформить заказ'" (onClick)="toCheckout()"></app-spinner-button>
         </div>
       </div>
     </div>

@@ -1,0 +1,12 @@
+<div class="stepper">
+  <div
+    class="stepper-step"
+    *ngFor="let step of steps"
+    [class.stepper-active]="(step.id === currentStep) || false"
+    [class.stepper-disabled]="step.id > currentStep"
+    matRipple
+    (click)="step.id < currentStep && changeStep(step.id)"
+  >
+    {{step.title}}
+  </div>
+</div>

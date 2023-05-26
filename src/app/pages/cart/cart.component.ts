@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 import {finalize} from "rxjs";
 import {hidePB, showPB} from "shared/functions/progressbar";
 import {toast} from "shared/functions/toast";
 import {ListenerService} from "shared/services/listener.service";
 import {StorageService} from "shared/services/storage.service";
 import {CartService} from "src/app/pages/cart/cart.service";
+import {CheckoutEnum} from "src/app/pages/checkout/checkout.enum";
+import {CheckoutService} from "src/app/pages/checkout/checkout.service";
 
 @Component({
   selector: 'app-cart',
@@ -14,6 +17,8 @@ import {CartService} from "src/app/pages/cart/cart.service";
 export class CartComponent implements OnInit {
   constructor(private readonly cartService: CartService,
               private readonly storageService: StorageService,
+              private readonly checkoutService: CheckoutService,
+              private readonly router: Router,
               private readonly listenerService: ListenerService) {
   }
 
@@ -45,7 +50,6 @@ export class CartComponent implements OnInit {
         if (res.code === 0) {
           toast('success', res.message);
           this.products = res.data.products;
-          console.log(res.data.products.length)
           this.listenerService.cartCount$.next(res.data.products.length);
           this.storageService.cartCount = res.data.products.length;
         } else {
@@ -71,6 +75,7 @@ export class CartComponent implements OnInit {
     } else {
       product.qty = Number(ref.value);
     }
+    product.sum = product.qty * product.price;
     this.cartService.changeProductQty(product).subscribe(res => {
       const current = this.products.find((book: any) => book._id === product._id);
       current.qty = res.data.qty;
@@ -80,9 +85,18 @@ export class CartComponent implements OnInit {
   changeQty(body: any, qty: 1 | -1) {
     const send = {...body};
     send.qty += qty;
+    send.sum = send.qty * send.price;
     this.cartService.changeProductQty(send).subscribe(res => {
       const current = this.products.find((book: any) => book._id === send._id);
       current.qty = res.data.qty;
     })
+  }
+
+  toCheckout(): void {
+    const body = {
+      total_sum: this.totalSum,
+      products: this.products
+    }
+    this.router.navigate(['/' + CheckoutEnum.Route]).then();
   }
 }
