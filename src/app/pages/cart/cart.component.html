@@ -16,17 +16,31 @@
             </div>
             <div class="cart__product-content">
               <div class="cart__product-title" [routerLink]="'/detail/' + product.book_id">{{product.title}}</div>
+              <div class="cart__product-delete">
+                <app-spinner-button
+                  [text]="'Удалить'"
+                  [backgroundColor]="'#D93E5C'"
+                  [loading]="loadingDelete === product._id"
+                  (onClick)="deleteProduct(product._id)"
+                ></app-spinner-button>
+              </div>
             </div>
           </div>
-          <div>Цена</div>
-          <div>Кол-во</div>
-          <div>Сумма</div>
+          <div>{{product.price}}</div>
+          <div class="qty">
+            <div class="qty__field">
+              <button (click)="changeQty(product,-1)" [disabled]="product.qty === 1">-</button>
+              <input type="text" [value]="product.qty" (input)="changeInputQty(ref,product)" #ref [max]="product.count">
+              <button (click)="changeQty(product,1)" [disabled]="product.qty === product.count">+</button>
+            </div>
+          </div>
+          <div>{{product.price * product.qty}}</div>
         </div>
       </div>
       <div class="cart__main-cart">
         <div class="cart__cart-header">Оформить заказ</div>
         <div class="cart__cart-body">
-          <div class="cart__cart-total">Сумма: <span>{{ '4 5685' }}</span></div>
+          <div class="cart__cart-total">Сумма: <span>{{ totalSum | currency:'USD':true }}</span></div>
           <app-spinner-button [text]="'Оформить заказ'"></app-spinner-button>
         </div>
       </div>

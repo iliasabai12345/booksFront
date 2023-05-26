@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {toast} from "shared/functions/toast";
+import {AuthService} from "shared/services/auth.service";
 import {StorageService} from "shared/services/storage.service";
 import {LoginComponent} from "src/app/modals/login/login.component";
 import {RegisterComponent} from "src/app/modals/register/register.component";
@@ -12,6 +13,7 @@ import {RegisterComponent} from "src/app/modals/register/register.component";
 })
 export class ProfileButtonComponent {
   constructor(private readonly storageService: StorageService,
+              private readonly authService: AuthService,
               private readonly dialog: MatDialog) {
   }
 
@@ -88,7 +90,7 @@ export class ProfileButtonComponent {
 
   logout(): void {
     this.user = null;
-    this.storageService.user = null;
-    toast('success','Вы вышли из аккаунта')
+    this.authService.logout();
+    toast('success','Вы вышли из аккаунта');
   }
 }

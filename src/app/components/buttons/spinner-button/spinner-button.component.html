@@ -1,4 +1,4 @@
-<button (click)="onClick.emit()" [disabled]="loading || disabled">
+<button (click)="onClick.emit()" [disabled]="loading || disabled" [style.background-color]="backgroundColor">
   <span *ngIf="!loading">{{text}}</span>
   <mat-spinner *ngIf="loading"></mat-spinner>
 </button>

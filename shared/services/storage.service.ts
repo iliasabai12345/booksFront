@@ -36,6 +36,6 @@ export class StorageService {
   }
 
   set cartCount(count: number) {
-    count && localStorage.setItem(LS_CART_COUNT, JSON.stringify(count));
+    (count || count === 0) &&  localStorage.setItem(LS_CART_COUNT, JSON.stringify(count));
   }
 }

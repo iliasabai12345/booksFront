@@ -10,5 +10,6 @@ export class SpinnerButtonComponent {
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
   @Input() color: string = '#febd01';
+  @Input() backgroundColor: string = '#febd01';
   @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
 }

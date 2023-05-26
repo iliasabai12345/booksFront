@@ -4,6 +4,6 @@
   </div>
   <div class="cart-info">
     <div>Корзина</div>
-    <div class="cart-count" [routerLink]="'/cart'">{{cartCount ? (cartCount + ' товаров') : 'Пуста'}}</div>
+    <div class="cart-count" (click)="toCart()" >{{cartCount ? (cartCount + ' товаров') : 'Пуста'}}</div>
   </div>
 </div>
