@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 500px;
+  box-sizing: border-box;
+
+  h1 {
+    color: var(--orange);
+    font-weight: bold;
+    margin: 0 !important;
+  }
+}
+
+.two-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.radio-form {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}

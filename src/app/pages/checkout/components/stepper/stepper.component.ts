@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {CheckoutService} from "src/app/pages/checkout/checkout.service";
 
 @Component({
   selector: 'app-stepper',
@@ -6,6 +7,8 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent {
+  constructor(public readonly checkoutService: CheckoutService) {
+  }
 
   @Input() currentStep: number = 1;
   steps = [
@@ -37,6 +40,6 @@ export class StepperComponent {
   ]
 
   changeStep(id: number) {
-    this.currentStep = id;
+    this.checkoutService.step$.next(id);
   }
 }

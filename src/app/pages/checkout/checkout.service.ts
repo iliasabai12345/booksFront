@@ -1,15 +1,37 @@
+import {HttpClient} from "@angular/common/http";
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
+import {StorageService} from "shared/services/storage.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckoutService {
 
-  constructor() {
+  constructor(private readonly storageService: StorageService,
+              private readonly httpClient: HttpClient) {
   }
 
-  readonly checkoutForm$: BehaviorSubject<any> = new BehaviorSubject<any>({});
+  readonly step$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
+  readonly products$: BehaviorSubject<any> = new BehaviorSubject({});
+  readonly userForm$: BehaviorSubject<any> = new BehaviorSubject<any>({});
+  readonly pay_type$: BehaviorSubject<any> = new BehaviorSubject<any>({
+    pay_type: null
+  })
 
+  mergeForms() {
+    const body = {
+      user_id: this.storageService.user._id,
+      date: new Date(),
+      time: Date.now(),
+      ...this.products$.getValue(),
+      ...this.userForm$.getValue(),
+      ...this.pay_type$.getValue()
+    }
+    return this.setOrder(body);
+  }
 
+  setOrder(body: any):Observable<any> {
+    return this.httpClient.post('api/orders/addOrder', body)
+  }
 }

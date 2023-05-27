@@ -9,6 +9,7 @@ button {
   border: none;
   font-weight: bold;
   cursor: pointer;
+  padding: 0 1rem;
 
   &:disabled {
     background: #bebebe;

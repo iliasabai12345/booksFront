@@ -1,7 +1,13 @@
 <div class="container">
   <div class="checkout">
     <div class="stepper">
-      <app-stepper></app-stepper>
+      <app-stepper [currentStep]="step"></app-stepper>
+    </div>
+    <div class="content">
+      <app-user-info *ngIf="step === 1"></app-user-info>
+      <app-pay-type *ngIf="step === 2"></app-pay-type>
+      <app-confirm-order *ngIf="step === 3"></app-confirm-order>
+      <app-finish-order *ngIf="step === 4"></app-finish-order>
     </div>
   </div>
 </div>

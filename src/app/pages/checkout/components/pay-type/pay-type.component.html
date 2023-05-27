@@ -1,0 +1,16 @@
+<div class="form">
+  <h1>Способ оплаты</h1>
+  <div class="form-items">
+    <div class="form-item" [class.form-selected]="pay_type === type.title" matRipple *ngFor="let type of types"
+         (click)="select(type)">
+      {{type.title}}
+    </div>
+  </div>
+  <div class="form-footer">
+    <app-spinner-button
+      [disabled]="!pay_type"
+      [text]="'Далее'"
+      (onClick)="submit()"
+    ></app-spinner-button>
+  </div>
+</div>

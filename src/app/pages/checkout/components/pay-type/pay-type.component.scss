@@ -1,0 +1,39 @@
+.form {
+  h1 {
+    color: var(--orange);
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  &-items {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &-item {
+    min-height: 100px;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 1rem;
+    border: 2px solid var(--gray3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  &-selected {
+    background: rgba(8, 74, 131, 0.1);
+    border: 2px solid var(--brand_blue)
+  }
+
+  &-footer {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

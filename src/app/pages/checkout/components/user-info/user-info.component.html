@@ -1,0 +1,50 @@
+<div class="form">
+  <h1>Введите данные</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Имя</mat-label>
+    <input matInput placeholder="Введите имя" [formControl]="$any(infoForm.get('user_name'))">
+    <mat-hint style="visibility: hidden">Hint</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Номер телефона</mat-label>
+    <input matInput placeholder="Введите номер телефона" [formControl]="$any(infoForm.get('phone_number'))">
+    <mat-hint style="visibility: hidden">Hint</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Город</mat-label>
+    <input matInput placeholder="Введите город" [formControl]="$any(infoForm.get('city'))">
+    <mat-hint style="visibility: hidden">Hint</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Аддресс</mat-label>
+    <input matInput placeholder="Введите аддресс" [formControl]="$any(infoForm.get('address'))">
+    <mat-hint style="visibility: hidden">Hint</mat-hint>
+  </mat-form-field>
+  <div class="two-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Дом</mat-label>
+      <input matInput placeholder="Введите дом" [formControl]="$any(infoForm.get('house'))">
+      <mat-hint style="visibility: hidden">Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Квартира</mat-label>
+      <input matInput placeholder="Введите квартира" [formControl]="$any(infoForm.get('flat'))">
+      <mat-hint style="visibility: hidden">Hint</mat-hint>
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Комментарий к доставке</mat-label>
+    <input matInput placeholder="Введите комментарий" [formControl]="$any(infoForm.get('comment'))">
+    <mat-hint style="visibility: hidden">Hint</mat-hint>
+  </mat-form-field>
+  <mat-radio-group aria-label="Select an option" class="radio-form" [formControl]="$any(infoForm.get('delivery_type'))">
+    <mat-radio-button value="Самовывоз">Самовывоз</mat-radio-button>
+    <mat-radio-button value="Доставка">Доставка</mat-radio-button>
+  </mat-radio-group>
+  <app-spinner-button
+    [backgroundColor]="'var(--deep_blue)'"
+    [disabled]="infoForm.invalid"
+    (onClick)="submit()"
+    [text]="'Сохранить и продолжить'"
+  ></app-spinner-button>
+</div>

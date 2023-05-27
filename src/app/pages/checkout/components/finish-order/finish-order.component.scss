@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+
+  h1:first-child {
+    color: #febd01;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  h1:last-child {
+    color: #febd01;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+}

@@ -97,6 +97,7 @@ export class CartComponent implements OnInit {
       total_sum: this.totalSum,
       products: this.products
     }
+    this.checkoutService.products$.next(body);
     this.router.navigate(['/' + CheckoutEnum.Route]).then();
   }
 }
