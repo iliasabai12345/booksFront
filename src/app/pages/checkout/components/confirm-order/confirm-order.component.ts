@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {finalize} from "rxjs";
 import {objectValuesToArray} from "shared/functions/objectValuesToArray";
+import {toast} from "shared/functions/toast";
 import {CheckoutService} from "src/app/pages/checkout/checkout.service";
 
 @Component({
@@ -31,8 +32,13 @@ export class ConfirmOrderComponent {
     this.checkoutService.mergeForms()
       .pipe(finalize(() => this.confirm = false))
       .subscribe(res => {
-        console.log(res);
-        this.checkoutService.step$.next(4);
+        if (res.code === 0) {
+          this.checkoutService.step$.next(4);
+          this.checkoutService.order$.next(res?.data);
+          toast('success', 'Заказ успешно оформлен!')
+        } else {
+          toast('error', 'Произошла ошибка во время оформления заказа!');
+        }
       })
   }
 }

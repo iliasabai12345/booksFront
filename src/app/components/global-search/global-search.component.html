@@ -1,8 +1,13 @@
 <div class="search">
   <div class="search-input">
-    <input type="text" placeholder="Найти товар">
+    <input type="text" placeholder="Найти товар" #input (input)="getProducts(input.value)">
   </div>
   <div class="search-button">
     <button>Найти</button>
   </div>
+  <div class="result" *ngIf="books?.length">
+    <div class="result-item" *ngFor="let book of books" (click)="toDetail(book._id,input)">{{book.title}}</div>
+  </div>
 </div>
+
+<div class="backdrop" *ngIf="books.length" (click)="books = []"></div>

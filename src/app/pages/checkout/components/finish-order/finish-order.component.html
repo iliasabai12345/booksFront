@@ -1,4 +1,4 @@
 <div class="wrapper">
   <h1>Ваш заказ успешно создан!!!</h1>
-  <h2>Номер вашего заказа <span style="color: #0a79d5">1234567854</span></h2>
+  <h2>Номер вашего заказа <span style="color: #0a79d5">{{(checkoutService.order$ | async)?._id}}</span></h2>
 </div>
