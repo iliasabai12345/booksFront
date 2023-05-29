@@ -1,0 +1,16 @@
+<section>
+  <header>
+    <div class="header__title">Книги к заказу {{books?.length}}</div>
+    <mat-icon class="header__icon" (click)="close()">close</mat-icon>
+  </header>
+  <main>
+    <div class="book-item" *ngFor="let book of books">
+      <div class="book-img">
+        <img [src]="book?.img_url" alt="img" height="50">
+      </div>
+      <div class="book-title">{{book?.title}}</div>
+      <div class="book-count">({{book?.qty}})</div>
+    </div>
+  </main>
+  <footer></footer>
+</section>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="order">
+    <h1>Мои заказы</h1>
+    <div class="orders">
+      <div class="orders-item" *ngFor="let order of orders">
+        <div class="orders-item-left">
+          <h3><span>{{order?._id}}</span> от {{order.date | date:'dd:mm:yyyy'}}</h3>
+          <div>Сумма: <span class="large">{{order?.total_sum}}</span></div>
+          <div>Статус: <span class="large">{{order?.order_status}}</span></div>
+          <div>Тип оплаты: <span class="large">{{order?.pay_type}}</span></div>
+          <div>Тип доставки: <span class="large">{{order?.delivery_type}}</span></div>
+          <div>Аддресс: <span class="large">{{order?.address}} {{order?.house}}</span></div>
+          <div>Номер телефона: <span class="large">{{order?.phone_number}}</span></div>
+          <div>Имя пользователя: <span class="large">{{order?.user_name}}</span></div>
+        </div>
+        <div class="orders-item-right">
+          <app-spinner-button text="Отменить заказ" backgroundColor="var(--red)"></app-spinner-button>
+          <app-spinner-button text="Товары заказа" (onClick)="openBooksModal(order)"></app-spinner-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
