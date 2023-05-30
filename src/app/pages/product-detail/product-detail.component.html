@@ -11,21 +11,61 @@
         <div class="detail__main-price">Цена: <span class="price">{{ book.price }}</span></div>
         <div class="detail__main-oldPrice" *ngIf="book?.old_price">Старая цена: <span
           class="oldPrice">{{ book.old_price }}</span></div>
-        <div class="detail__main-risk">Никакого риска! Оплатить данный товар Вы можете при получении. У нас есть
-          бесплатная доставка по Казахстану. Если возникли вопросы, пожалуйста, свяжитесь с нами удобным способом
+        <div class="detail__main-risk">{{translates['no_risk'] || 'Никакого риска! Оплатить данный товар Вы можете при получении. У нас есть бесплатная доставка по Казахстану. Если возникли вопросы, пожалуйста, свяжитесь с нами удобным способом'}}
         </div>
         <div class="detail__main-series" *ngIf="book?.series">Серия: <span>{{book?.series}}</span></div>
-        <div class="detail__main-description">{{book.description_ru}}</div>
+        <div class="detail__main-description">{{isCurrentRu ? book.description_ru : book.description_kz}}</div>
       </div>
       <div class="detail__main-cart">
-        <div>В корзину</div>
-        <div>Цена: <span class="price">{{book.price}}</span></div>
-        <div>Доступно на складе: <span style="font-weight: bold">{{book?.count}}</span></div>
+        <div>{{translates['to_cart'] || 'В корзину'}}</div>
+        <div>{{translates['price'] || 'Цена'}}: <span class="price">{{book.price}}</span></div>
+        <div>{{translates['available'] || 'Доступно на складе'}}: <span style="font-weight: bold">{{book?.count}}</span></div>
         <app-add-cart-btn [book]="cartBook"></app-add-cart-btn>
       </div>
     </section>
-    <section class="detail__info"></section>
-    <section class="detail__presentHouse"></section>
+    <section class="detail__info">
+      <h2>{{translates['detail_info'] || 'Детальная информация'}}</h2>
+      <div class="detail-specs">
+        <div class="detail-spec">
+          <div></div>
+          <div></div>
+        </div>
+        <div class="detail-spec">
+          <div>{{translates['book_height'] || 'Высота издания'}}:</div>
+          <div>{{book?.height}}</div>
+        </div>
+        <div class="detail-spec">
+          <div>{{translates['book_width'] || 'Ширина издания'}}:</div>
+          <div>{{book?.width}}</div>
+        </div>
+        <div class="detail-spec">
+          <div>{{translates['book_thinkness'] || 'Толщина издания'}}:</div>
+          <div>{{book?.thickness}}</div>
+        </div>
+        <div class="detail-spec">
+          <div>{{translates['book_page_count'] || 'Количество страниц'}}:</div>
+          <div>{{book?.page_count}}</div>
+        </div>
+        <div class="detail-spec">
+          <div>{{translates['language'] || 'Язык'}}:</div>
+          <div>{{book?.language}}</div>
+        </div>
+        <div class="detail-spec">
+          <div>{{translates['added_date'] || 'Дата добавления'}}:</div>
+          <div>{{book?.addedDate | date:'MMMM d, y'}}</div>
+        </div>
+      </div>
+    </section>
+    <section class="detail__presentHouse">
+      <h2>{{translates['present_house'] || 'Издательство'}}</h2>
+      <div style="font-weight: bold;margin-bottom: 1rem">{{book?.present_house}}</div>
+      <div>{{isCurrentRu ? book?.present_house_description : book?.present_house_description_kz}}</div>
+    </section>
+    <section *ngIf="book?.author">
+      <h2>Автор</h2>
+      <div style="font-weight: bold;margin-bottom: 1rem">{{book?.author}}</div>
+      <div>{{isCurrentRu ? book?.author_info_ru : book?.author_info_kz}}</div>
+    </section>
   </div>
 </div>
 

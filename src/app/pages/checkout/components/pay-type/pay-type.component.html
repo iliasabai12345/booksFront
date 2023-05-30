@@ -1,5 +1,5 @@
 <div class="form">
-  <h1>Способ оплаты</h1>
+  <h1>{{'Способ оплаты'}}</h1>
   <div class="form-items">
     <div class="form-item" [class.form-selected]="pay_type === type.title" matRipple *ngFor="let type of types"
          (click)="select(type)">

@@ -11,3 +11,7 @@
 .none {
   display: none;
 }
+
+button[disabled] {
+  background: #d1d1d1 !important;
+}

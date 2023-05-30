@@ -2,14 +2,12 @@
   <div class="banners">
     <ng-container>
       <div
-        [routerLink]="'/detail/' + currentMainBanner?._id"
         class="banners-main"
         [style]="'background-image:url(' + currentMainBanner?.image + ')'"
       ></div>
     </ng-container>
     <div class="banners-secondary">
       <div class="secondary-banner" *ngFor="let banner of secondaryBanners"
-           [routerLink]="'/detail/' + banner?._id"
            [style]="'background-image:url(' + banner.image + ')'"
            [class.skeleton]="loading"
       ></div>

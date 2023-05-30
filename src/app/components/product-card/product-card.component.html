@@ -7,10 +7,11 @@
   </div>
   <div class="card__prices">
     <div class="card__prices-price">
-      {{ book.price }}
+<!--      {{ book.price }}-->
+      {{ book.price | currency:'KZT':'':'1.0-0'}} ₸
     </div>
     <div class="card__prices-old" *ngIf="book?.old_price">
-      {{ book.old_price }}
+      {{ book.old_price | currency:'KZT':'':'1.0-0'}} ₸
     </div>
   </div>
   <div class="cart-button">

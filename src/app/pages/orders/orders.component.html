@@ -5,17 +5,17 @@
       <div class="orders-item" *ngFor="let order of orders">
         <div class="orders-item-left">
           <h3><span>{{order?._id}}</span> от {{order.date | date:'dd:mm:yyyy'}}</h3>
-          <div>Сумма: <span class="large">{{order?.total_sum}}</span></div>
-          <div>Статус: <span class="large">{{order?.order_status}}</span></div>
-          <div>Тип оплаты: <span class="large">{{order?.pay_type}}</span></div>
-          <div>Тип доставки: <span class="large">{{order?.delivery_type}}</span></div>
-          <div>Аддресс: <span class="large">{{order?.address}} {{order?.house}}</span></div>
-          <div>Номер телефона: <span class="large">{{order?.phone_number}}</span></div>
-          <div>Имя пользователя: <span class="large">{{order?.user_name}}</span></div>
+          <div>{{translates['sum'] || 'Сумма'}}: <span class="large">{{order?.total_sum}}</span></div>
+          <div>{{translates['status'] || 'Статус'}}: <span class="large" [style.color]="order?.order_status === 'отменен' && 'red'">{{order?.order_status}}</span></div>
+          <div>{{translates['pay_type'] || 'Тип оплаты'}}: <span class="large">{{order?.pay_type}}</span></div>
+          <div>{{translates['delivery_type'] || 'Тип доставки'}}: <span class="large">{{order?.delivery_type}}</span></div>
+          <div>{{translates['address'] || 'Аддресс'}}: <span class="large">{{order?.address}} {{order?.house}}</span></div>
+          <div>{{translates['phone_number'] || "Номер телефона"}}: <span class="large">{{order?.phone_number}}</span></div>
+          <div>{{translates['user_name'] || 'Имя пользователя'}}: <span class="large">{{order?.user_name}}</span></div>
         </div>
         <div class="orders-item-right">
-          <app-spinner-button text="Отменить заказ" backgroundColor="var(--red)"></app-spinner-button>
-          <app-spinner-button text="Товары заказа" (onClick)="openBooksModal(order)"></app-spinner-button>
+          <app-spinner-button [disabled]="order?.order_status === 'отменен'" [text]="translates['cancel_order'] || 'Отменить заказ'" (onClick)="cancelOrder(order)" backgroundColor="var(--red)"></app-spinner-button>
+          <app-spinner-button [text]="translates['order_products'] || 'Товары заказа'" (onClick)="openBooksModal(order)"></app-spinner-button>
         </div>
       </div>
     </div>

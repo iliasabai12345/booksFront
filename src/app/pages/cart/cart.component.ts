@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {finalize} from "rxjs";
 import {hidePB, showPB} from "shared/functions/progressbar";
 import {toast} from "shared/functions/toast";
+import {translates} from "shared/i18n/lng/languages";
 import {ListenerService} from "shared/services/listener.service";
 import {StorageService} from "shared/services/storage.service";
 import {CartService} from "src/app/pages/cart/cart.service";
@@ -24,9 +25,14 @@ export class CartComponent implements OnInit {
 
   products: any = [];
   loadingDelete: string | null = null;
+  translates: any;
 
   ngOnInit(): void {
     this.getProducts();
+    this.listenerService.currentLng$.subscribe(res => {
+      // @ts-ignore
+      this.translates = translates[res];
+    })
   }
 
   getProducts() {

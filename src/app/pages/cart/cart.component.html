@@ -1,13 +1,13 @@
 <div class="container">
   <div class="cart">
-    <h1>Корзина <span style="color: #000">({{ products.length }})</span></h1>
+    <h1>{{translates['cart'] || 'Корзина'}} <span style="color: #000">({{ products.length }})</span></h1>
     <div class="cart__main">
       <div class="cart__main-products">
         <div class="cart__products-header">
-          <div>Товары добавленные в корзину</div>
-          <div>Цена</div>
-          <div>Кол-во</div>
-          <div>Сумма</div>
+          <div>{{translates['added_products'] || 'Товары добавленные в корзину'}}</div>
+          <div>{{translates['price'] || 'Цена'}}</div>
+          <div>{{translates['qty'] || 'Кол-во'}}</div>
+          <div>{{translates['summ'] || 'Сумма'}}</div>
         </div>
         <div class="cart__products-body" *ngFor="let product of products">
           <div class="cart__product">
@@ -15,10 +15,12 @@
               <img [src]="product.img_url" alt="" height="140">
             </div>
             <div class="cart__product-content">
-              <div class="cart__product-title" [routerLink]="'/detail/' + product.book_id">{{product.title}}</div>
+              <div class="cart__product-title" [routerLink]="'/detail/' + product.book_id">
+                {{product.title}}
+              </div>
               <div class="cart__product-delete">
                 <app-spinner-button
-                  [text]="'Удалить'"
+                  [text]="translates['remove'] || 'Удалить'"
                   [backgroundColor]="'#D93E5C'"
                   [loading]="loadingDelete === product._id"
                   (onClick)="deleteProduct(product._id)"
@@ -26,7 +28,7 @@
               </div>
             </div>
           </div>
-          <div>{{product.price}}</div>
+          <div>{{ product.price | currency:'KZT':'':'1.0-0'}} ₸</div>
           <div class="qty">
             <div class="qty__field">
               <button (click)="changeQty(product,-1)" [disabled]="product.qty === 1">-</button>
@@ -34,14 +36,14 @@
               <button (click)="changeQty(product,1)" [disabled]="product.qty === product.count">+</button>
             </div>
           </div>
-          <div>{{product.sum}}</div>
+          <div>{{ product.sum | currency:'KZT':'':'1.0-0'}} ₸</div>
         </div>
       </div>
       <div class="cart__main-cart">
-        <div class="cart__cart-header">Оформить заказ</div>
+        <div class="cart__cart-header">{{translates['form_order'] || 'Оформить заказ'}}</div>
         <div class="cart__cart-body">
-          <div class="cart__cart-total">Сумма: <span>{{ totalSum | currency:'USD':true }}</span></div>
-          <app-spinner-button [text]="'Оформить заказ'" (onClick)="toCheckout()"></app-spinner-button>
+          <div class="cart__cart-total">{{translates['summ'] || 'Сумма'}}: <span>{{ totalSum | currency:'KZT':'':'1.0-0'}} ₸</span></div>
+          <app-spinner-button [text]="translates['form_order'] || 'Оформить заказ'" (onClick)="toCheckout()"></app-spinner-button>
         </div>
       </div>
     </div>

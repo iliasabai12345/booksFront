@@ -1,1 +1,1 @@
-<app-spinner-button (onClick)="addCart()" [loading]="loading" text="В корзину"></app-spinner-button>
+<app-spinner-button (onClick)="addCart()" [loading]="loading" [text]="(listenerService.currentLng$ | async) === 'ru' ? 'В корзину' : 'Себетке'"></app-spinner-button>

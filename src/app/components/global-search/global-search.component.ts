@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {finalize} from "rxjs";
 import {hidePB, showPB} from "shared/functions/progressbar";
+import {ListenerService} from "shared/services/listener.service";
 import {GlobalSearchService} from "src/app/components/global-search/global-search.service";
 
 @Component({
@@ -11,6 +12,7 @@ import {GlobalSearchService} from "src/app/components/global-search/global-searc
 })
 export class GlobalSearchComponent {
   constructor(private readonly globalSearchService: GlobalSearchService,
+              public readonly listenerService: ListenerService,
               private readonly router: Router) {
   }
 

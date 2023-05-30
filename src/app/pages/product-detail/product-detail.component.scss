@@ -106,3 +106,26 @@
   font-weight: bold;
   font-size: 1rem;
 }
+
+h2 {
+  color: #ffbd00 !important;
+  font-weight: bold !important;
+}
+
+.detail-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 250px;
+  width: 100%;
+}
+
+.detail-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  div:first-child {
+    font-weight: bold;
+  }
+}

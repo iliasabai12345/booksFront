@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {hidePB, showPB} from "shared/functions/progressbar";
+import {translates} from "shared/i18n/lng/languages";
+import {ListenerService} from "shared/services/listener.service";
 import {StorageService} from "shared/services/storage.service";
 import {ProductDetailService} from "src/app/pages/product-detail/product-detail.service";
 
@@ -12,11 +14,14 @@ import {ProductDetailService} from "src/app/pages/product-detail/product-detail.
 export class ProductDetailComponent {
   constructor(private readonly activatedRoute: ActivatedRoute,
               private readonly storageService: StorageService,
+              private readonly listenerService: ListenerService,
               private readonly productDetailService: ProductDetailService) {
   }
 
+  translates: any;
   book: any;
   cartBook: any;
+  isCurrentRu: boolean = true;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(res => {
       showPB();
@@ -32,6 +37,15 @@ export class ProductDetailComponent {
           }
         }
       })
+    })
+    this.listenLng();
+  }
+
+  listenLng() {
+    this.listenerService.currentLng$.subscribe(res => {
+      // @ts-ignore
+      this.translates = translates[res];
+      this.isCurrentRu = res === 'ru';
     })
   }
 }

@@ -6,4 +6,5 @@ import {BehaviorSubject} from "rxjs";
 })
 export class ListenerService {
   readonly cartCount$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  readonly currentLng$: BehaviorSubject<string> = new BehaviorSubject<string>('ru');
 }

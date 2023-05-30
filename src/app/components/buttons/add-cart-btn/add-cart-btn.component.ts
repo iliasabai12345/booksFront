@@ -14,7 +14,7 @@ import {AddCartBtnService} from "src/app/components/buttons/add-cart-btn/add-car
 export class AddCartBtnComponent {
   constructor(private readonly addCartBtnService: AddCartBtnService,
               private readonly storageService: StorageService,
-              private readonly listenerService: ListenerService) {
+              public readonly listenerService: ListenerService) {
   }
 
   loading: boolean = false;

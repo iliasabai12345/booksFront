@@ -12,8 +12,12 @@ export class OrdersService {
               private readonly storageService: StorageService) {
   }
 
-  getOrders():Observable<any> {
+  getOrders(): Observable<any> {
     const user_id = this.storageService.user._id;
     return this.http.get(`api/orders/getOrders/${user_id}`);
+  }
+
+  updateOrder(order: any): Observable<any> {
+    return this.http.put('api/orders/changeOrder/' + order._id, order)
   }
 }

@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {translates} from "shared/i18n/lng/languages";
+import {ListenerService} from "shared/services/listener.service";
 import {StorageService} from "shared/services/storage.service";
 
 @Component({
@@ -7,7 +9,18 @@ import {StorageService} from "shared/services/storage.service";
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent {
-  constructor(private readonly storageService: StorageService) {
+  constructor(private readonly storageService: StorageService,
+              private readonly listenerService: ListenerService
+  ) {
+  }
+
+  translates: any;
+
+  ngOnInit() {
+    this.listenerService.currentLng$.subscribe(res => {
+      // @ts-ignore
+      this.translates = translates[res];
+    })
   }
 
   cartProduct: any;

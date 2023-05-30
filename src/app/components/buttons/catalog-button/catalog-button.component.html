@@ -7,6 +7,6 @@
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item *ngFor="let category of categories" (click)="toCategory(category.keyword)">
-    <span>{{category.title}}</span>
+    <span>{{(listenerService.currentLng$ | async) === 'ru' ? category.title : category.title_kk}}</span>
   </button>
 </mat-menu>

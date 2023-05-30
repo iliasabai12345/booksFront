@@ -3,7 +3,7 @@
     <img src="https://cdn.f.kz/img/new_header_2015/cart_new.svg" width="40px" height="40px" alt="img">
   </div>
   <div class="cart-info">
-    <div>Корзина</div>
-    <div class="cart-count" (click)="toCart()" >{{cartCount ? (cartCount + ' товаров') : 'Пуста'}}</div>
+    <div>{{(listenerService.currentLng$ | async) === 'ru' ? 'Корзина' : 'Себет'}}</div>
+    <div class="cart-count" (click)="toCart()" >{{cartCount ? (cartCount + ((listenerService.currentLng$ | async) === 'ru' ? ' товаров' : ' тауарлар')) : 'Пуста'}}</div>
   </div>
 </div>

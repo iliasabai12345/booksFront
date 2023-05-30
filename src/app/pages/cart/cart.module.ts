@@ -8,11 +8,11 @@ import {CartComponent} from "src/app/pages/cart/cart.component";
 
 @NgModule({
   declarations: [CartComponent],
-  imports: [
-    CommonModule,
-    SpinnerButtonModule,
-    RouterModule
-  ],
+    imports: [
+        CommonModule,
+        SpinnerButtonModule,
+        RouterModule
+    ],
   exports:[CartComponent]
 })
 export class CartModule { }

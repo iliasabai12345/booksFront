@@ -2,14 +2,14 @@
   <h1>Пожалуйста, внимательно проверьте данные и подтвердите заказ</h1>
   <div class="contents">
     <div class="content">
-      <div>Аддресс
+      <div>{{translates['address'] || 'Аддресс'}}
         <button class="change-btn" (click)="changeInfoStep(1)">Изменить</button>
       </div>
       <div *ngFor="let key of userInfo">{{key}}</div>
     </div>
     <div class="content">
-      <div>Тип оплаты
-        <button class="change-btn" (click)="changeInfoStep(2)">Изменить</button>
+      <div>{{translates['pay_type'] || 'Тип оплаты'}}
+        <button class="change-btn" (click)="changeInfoStep(2)">{{translates['change'] || 'Изменить'}}</button>
       </div>
       <div *ngFor="let key of payType">{{key}}</div>
     </div>
@@ -19,7 +19,7 @@
       [width]="'200px'"
       [loading]="confirm"
       [backgroundColor]="'green'"
-      [text]="'Офромить заказ'"
+      [text]="translates['form_order'] || 'Офромить заказ'"
       (onClick)="setOrder()"
     ></app-spinner-button>
   </div>
