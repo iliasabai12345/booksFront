@@ -28,7 +28,7 @@
               </div>
             </div>
           </div>
-          <div>{{ product.price | currency:'KZT':'':'1.0-0'}} ₸</div>
+          <div>{{ product.price |  currency:'KZT':'':'1.0-0'}} ₸</div>
           <div class="qty">
             <div class="qty__field">
               <button (click)="changeQty(product,-1)" [disabled]="product.qty === 1">-</button>
